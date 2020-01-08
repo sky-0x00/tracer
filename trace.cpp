@@ -79,7 +79,7 @@ namespace string {
 
 tracer::settings::settings(
 	_in const config &config
-) :
+) noexcept :
 	outputs(config.outputs), show_flags(config.show_flags)
 {
 	module = ::string::is__null_or_empty(config.module) ? get_module() : config.module;
@@ -89,10 +89,10 @@ tracer::settings::settings(
 		if (config.file.openmode__is_append)
 			openmode |= std::ios_base::app | std::ios_base::ate;
 		file.open(config.file.path, openmode);
-		assert(file.is_open());
-
-		if (config.file.openmode__is_append && (0 < file.tellp()))
-			file.put(L'\n');
+		
+		if (file.is_open())
+			if (config.file.openmode__is_append && (0 < file.tellp()))
+				file.put(L'\n');
 	}
 }
 

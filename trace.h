@@ -59,7 +59,7 @@ protected:
 		mask<trace::output> outputs;
 		mask<trace::show_flag> show_flags;
 	public:
-		settings(_in const config &config);
+		settings(_in const config &config) noexcept;
 	private:
 		static string_t get_module(_in bool without_extension = false);
 	};
