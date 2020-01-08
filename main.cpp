@@ -5,7 +5,13 @@
 
 int wmain(
 ) {
-    
+	const tracer::config tc {
+		nullptr, {L"", false}, {trace::output::monitor}, {/*trace::show_flag::process_id*/}
+	};
+	tracer tracer(tc);
+
+	int x = -3;
+	tracer.trace(__FUNCTIONW__, trace::categoty::normal, L"x: %i", x);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
