@@ -61,7 +61,7 @@ protected:
 	public:
 		settings(_in const config &config);
 	private:
-		static string_t get_module();
+		static string_t get_module(_in bool without_extension = false);
 	};
 
 	class string {

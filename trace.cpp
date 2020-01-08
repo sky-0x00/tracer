@@ -29,6 +29,7 @@ namespace string {
 
 //-------------------------------------------------------------------------------------------------------------------------------------------
 /*static*/ string_t tracer::settings::get_module(
+	_in bool without_extension /*= false*/
 ) {
 	// QueryFullProcessImageNameW
 	// GetProcessImageFileNameW
@@ -69,7 +70,7 @@ namespace string {
 	go_next:
 		if (found.first)
 			path.first = found.first + 1;
-		if (found.second)
+		if (without_extension && found.second)
 			path.second = found.second;
 	}
 
